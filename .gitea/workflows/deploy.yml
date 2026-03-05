@@ -18,7 +18,7 @@ jobs:
       - name: Deploy Compose Stack
         run: |
           # Set deployment folder on NAS
-          DEPLOY_DIR=/volume1/docker/myapp
+          DEPLOY_DIR=/volume4/docker/jellyfin
 
           # Make sure folder exists
           mkdir -p $DEPLOY_DIR
