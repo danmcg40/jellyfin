@@ -1,0 +1,53 @@
+services:
+  jellyfin:
+    image: jellyfin/jellyfin:latest
+    container_name: jellyfin
+    networks:
+      - media_net
+    user: "1000:10"
+    ports:
+      - "8096:8096"
+    volumes:
+      - /volume4/docker/jellyfin/config:/config
+      - /volume4/docker/jellyfin/cache:/cache
+      - /volume1/Media/movies:/media/movies:ro
+      - /volume1/Media/shows:/media/shows:ro
+      - /volume2/danmedia/adult:/media/adult:ro
+      - /volume2/danmedia/adult2:/media/adult2:ro
+    environment:
+      - TZ=America/New_York
+      - JELLYFIN_CPU_THREADS=2
+    restart: unless-stopped
+
+  tunarr:
+    image: chrisbenincasa/tunarr:1.0.18
+    container_name: tunarr
+    networks:
+      - media_net
+    ports:
+      - "8000:8000"
+    volumes:
+      - /volume4/docker/tunarr/config:/config
+      - /volume1/Media/movies:/media/movies:ro
+      - /volume1/Media/shows:/media/shows:ro
+      - /volume2/danmedia/adult:/media/adult:ro
+      - /volume2/danmedia/adult2:/media/adult2:ro
+    devices:
+      - /dev/dri:/dev/dri   # Intel QuickSync on DXP2800
+    environment:
+      - TZ=America/New_York
+      - PUID=1000
+      - PGID=10
+      - TUNARR_DEFAULT_TRANSCODE_VIDEO_RESOLUTION=1920x1080
+      - TUNARR_DEFAULT_TRANSCODE_VIDEO_BITRATE=2200k
+      - TUNARR_DEFAULT_TRANSCODE_AUDIO_BITRATE=160k
+      - TUNARR_RESOLUTION=1920x1080
+      - TUNARR_FPS=30
+      - TUNARR_KEYFRAME_INTERVAL=2
+      - TUNARR_ADAPTIVE_BITRATE=true
+      - TUNARR_BUFFER_MS=1000
+    restart: unless-stopped
+
+networks:
+  media_net:
+    driver: bridge

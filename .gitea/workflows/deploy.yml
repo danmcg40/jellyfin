@@ -1,0 +1,36 @@
+name: Deploy to NAS
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: linux   # Must match runner label "linux"
+
+    steps:
+      # Step 1: Checkout repo
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      # Step 2: Deploy to NAS host
+      - name: Deploy Compose Stack
+        run: |
+          # Set deployment folder on NAS
+          DEPLOY_DIR=/volume4/docker/jellyfin
+
+          # Make sure folder exists
+          mkdir -p $DEPLOY_DIR
+
+          # Copy files to deployment folder
+          cp -r ./* $DEPLOY_DIR
+
+          # Go to deployment folder
+          cd $DEPLOY_DIR
+
+          # Pull latest images (optional if using image tags)
+          docker compose pull
+
+          # Start or update containers
+          docker compose up -d --remove-orphans
