@@ -29,6 +29,9 @@ jobs:
           # Go to deployment folder
           cd $DEPLOY_DIR
 
+          # Stop any old containers from previous deployments
+          docker-compose down --remove-orphans
+
           # Pull latest images (optional if using image tags)
           docker-compose pull
 
