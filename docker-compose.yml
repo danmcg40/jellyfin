@@ -30,8 +30,7 @@ services:
       - /volume4/docker/tunarr/config:/config
       - /volume1/Media/movies:/media/movies:ro
       - /volume1/Media/shows:/media/shows:ro
-      - /volume2/danmedia/adult:/media/adult:ro
-      - /volume2/danmedia/adult2:/media/adult2:ro
+      - /volume2/danmedia/danmedia:/media/danmedia:ro
     devices:
       - /dev/dri:/dev/dri   # Intel QuickSync on DXP2800
     environment:
