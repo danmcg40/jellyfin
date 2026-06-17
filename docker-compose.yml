@@ -12,7 +12,7 @@ services:
       - /volume4/docker/jellyfin/cache:/cache
       - /volume1/Media/movies:/media/movies:ro
       - /volume1/Media/shows:/media/shows:ro
-      - /volume2/danmedia/danmedia:/media/danmedia:ro
+      - /volume2/danmedia:/media/danmedia:ro
     environment:
       - TZ=America/New_York
       - JELLYFIN_CPU_THREADS=2
