@@ -53,7 +53,7 @@ services:
       - media_net
     environment:
       - LOG_LEVEL=info
-      - TZ=Europe/Paris
+      - TZ=America/New_York
     volumes:
       - /volume4/docker/jellyseerr/config:/app/config
     ports:
@@ -68,7 +68,7 @@ services:
     environment:
       - PUID=1000
       - PGID=1000
-      - TZ=Europe/Paris
+      - TZ=America/New_York
     volumes:
       - /volume4/docker/radarr/config:/config
       - /volume1/Media/movies:/movies
@@ -85,7 +85,7 @@ services:
     environment:
       - PUID=1000
       - PGID=1000
-      - TZ=Europe/Paris
+      - TZ=America/New_York
     volumes:
       - /volume4/docker/sonarr/config:/config
       - /volume1/Media/shows:/tv
@@ -102,7 +102,7 @@ services:
     environment:
       - PUID=1000
       - PGID=1000
-      - TZ=Europe/Paris
+      - TZ=America/New_York
     volumes:
       - /volume4/docker/prowlarr/config:/config
     ports:
@@ -155,7 +155,7 @@ services:
     environment:
       - PUID=1000
       - PGID=1000
-      - TZ=Europe/Paris
+      - TZ=America/New_York
     volumes:
       - /volume4/docker/bazarr/config:/config
       - /volume1/Media/movies:/movies
