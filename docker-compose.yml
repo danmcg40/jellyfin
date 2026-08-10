@@ -163,6 +163,23 @@ services:
     ports:
       - 6767:6767
     restart: unless-stopped
+  
+    whisparr:
+    image: ghcr.io/hotio/whisparr:latest
+    container_name: whisparr
+    networks:
+      - media_net
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=America/New_York
+    volumes:
+      - /volume4/docker/whisparr/config:/config
+      - /volume2/danmedia/adult:/adult
+      - /volume2/danmedia/downloads:/downloads
+    ports:
+      - 6969:6969
+    restart: unless-stopped
 
 networks:
   media_net:
