@@ -176,7 +176,7 @@ services:
     volumes:
       - /volume4/docker/whisparr/config:/config
       - /volume2/danmedia:/adult
-      - /volume2/danmedia/downloads:/downloads
+      - /volume1/Downloads:/downloads
     ports:
       - 6969:6969
     restart: unless-stopped
