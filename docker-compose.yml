@@ -167,11 +167,10 @@ services:
   whisparr:
     image: ghcr.io/hotio/whisparr:latest
     container_name: whisparr
+    user: "1010:100"
     networks:
       - media_net
     environment:
-      - PUID=1000
-      - PGID=1000
       - TZ=America/New_York
     volumes:
       - /volume4/docker/whisparr/config:/config
