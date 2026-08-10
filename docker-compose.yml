@@ -164,7 +164,7 @@ services:
       - 6767:6767
     restart: unless-stopped
   
-    whisparr:
+  whisparr:
     image: ghcr.io/hotio/whisparr:latest
     container_name: whisparr
     networks:
