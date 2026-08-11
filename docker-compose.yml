@@ -165,7 +165,7 @@ services:
     restart: unless-stopped
   
   whisparr:
-    image: ghcr.io/hotio/whisparr:latest
+    image: ghcr.io/hotio/whisparr:v3
     container_name: whisparr
     networks:
       - media_net
