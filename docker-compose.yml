@@ -148,6 +148,24 @@ services:
       - gluetun
     restart: unless-stopped
  
+  byparr:
+    image: thetadev256/byparr:latest
+    container_name: byparr
+    networks:
+      - media_net
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=America/New_York
+    volumes:
+      - /volume4/docker/byparr/config:/config
+      - /volume1/Media/movies:/media/movies:ro
+      - /volume1/Media/shows:/media/shows:ro
+      - /volume2/danmedia:/media/danmedia:ro
+    ports:
+      - 9997:3000
+    restart: unless-stopped
+ 
 networks:
   media_net:
     driver: bridge
