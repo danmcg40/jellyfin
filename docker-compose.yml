@@ -208,7 +208,7 @@ services:
       - /volume1/Media/shows:/media/shows:ro
       - /volume2/danmedia:/media/danmedia:ro
     ports:
-      - 9998:9999
+      - 9998:3000
     depends_on:
       - stash_db
     restart: unless-stopped
