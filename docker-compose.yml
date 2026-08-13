@@ -131,6 +131,7 @@ services:
       - "6881:6881/udp"
       - "9696:9696"    # prowlarr
       - "9997:3000"    # byparr (host 9997 -> container 3000 in gluetun namespace)
+      - "8191:8191"    # byparr API
     restart: unless-stopped
 
   qbittorrent:
