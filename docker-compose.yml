@@ -181,6 +181,25 @@ services:
       - 6969:6969
     restart: unless-stopped
 
+  stasharr:
+    # Adjust the image if you prefer an official/community tag
+    image: ghcr.io/stashapp/stasharr:latest
+    container_name: stasharr
+    networks:
+      - media_net
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=America/New_York
+    volumes:
+      - /volume4/docker/stasharr/config:/config
+      - /volume1/Media/movies:/media/movies:ro
+      - /volume1/Media/shows:/media/shows:ro
+      - /volume2/danmedia:/media/danmedia:ro
+    ports:
+      - 9999:9999
+    restart: unless-stopped
+
 networks:
   media_net:
     driver: bridge
