@@ -197,6 +197,11 @@ services:
       - DB_USER=stash
       - DB_PASSWORD=stashpass
       - DB_NAME=stashdb
+      - PGHOST=stash_db
+      - PGPORT=5432
+      - PGUSER=stash
+      - PGPASSWORD=stashpass
+      - PGDATABASE=stashdb
     volumes:
       - /volume4/docker/stasharr/config:/config
       - /volume1/Media/movies:/media/movies:ro
