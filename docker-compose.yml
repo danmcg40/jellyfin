@@ -182,8 +182,8 @@ services:
     restart: unless-stopped
 
   stasharr:
-    # Adjust the image if you prefer an official/community tag
-    image: ghcr.io/stashapp/stasharr:latest
+    # Using a public Docker Hub image to avoid GHCR auth requirements
+    image: adoah/stasharr-api:latest
     container_name: stasharr
     networks:
       - media_net
