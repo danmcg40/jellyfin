@@ -97,16 +97,15 @@ services:
   prowlarr:
     image: lscr.io/linuxserver/prowlarr:latest
     container_name: prowlarr
-    networks:
-      - media_net
+    network_mode: "service:gluetun"
     environment:
       - PUID=1000
       - PGID=1000
       - TZ=America/New_York
     volumes:
       - /volume4/docker/prowlarr/config:/config
-    ports:
-      - 9696:9696
+    depends_on:
+      - gluetun
     restart: unless-stopped
   gluetun:
     image: qmcgaw/gluetun:latest
@@ -151,8 +150,7 @@ services:
   byparr:
     image: thetadev256/byparr:latest
     container_name: byparr
-    networks:
-      - media_net
+    network_mode: "service:gluetun"
     environment:
       - PUID=1000
       - PGID=1000
@@ -162,8 +160,8 @@ services:
       - /volume1/Media/movies:/media/movies:ro
       - /volume1/Media/shows:/media/shows:ro
       - /volume2/danmedia:/media/danmedia:ro
-    ports:
-      - 9997:3000
+    depends_on:
+      - gluetun
     restart: unless-stopped
  
 networks:
