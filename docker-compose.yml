@@ -183,7 +183,7 @@ services:
 
   stasharr:
     # Using a public Docker Hub image to avoid GHCR auth requirements
-    image: adoah/stasharr-api:latest
+    image: ghcr.io/enymawse/stasharr-portal:latest
     container_name: stasharr
     networks:
       - media_net
